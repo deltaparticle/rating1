@@ -1,0 +1,25 @@
+specVersion: 0.0.4
+description: Subgraph for the Professor Rating System
+repository: https://github.com/your-repo/prof-rating-system
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: RatingSystem
+    network: mainnet
+    source:
+      address: "0xF864fFb2C4ffD4bBD0A7C1F902Fb45CCc9730a8B"
+      abi: RatingSystem
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Review
+      abis:
+        - name: RatingSystem
+          file: ./abis/RatingSystem.json
+      eventHandlers:
+        - event: ReviewSubmitted(indexed uint256, indexed address, uint256, uint256, uint256)
+          handler: handleReviewSubmitted
+      file: ./src/mapping.ts

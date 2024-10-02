@@ -1,0 +1,9 @@
+ type Review @entity {
+  id: ID!
+  courseId: BigInt!
+  student: Bytes!
+  question1Rating: Int!
+  question2Rating: Int!
+  question3Rating: Int!
+}
+
